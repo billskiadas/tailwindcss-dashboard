@@ -1,10 +1,12 @@
 import React from 'react';
 import './App.css';
+import Calendar from "./components/Calendar/Calendar";
 
 function App() {
   return (
     <div className="App">
-      <div className={"text-red-500"}>Hello world text from TailWindCSS</div>
+        <Calendar/>
+
     </div>
   );
 }
