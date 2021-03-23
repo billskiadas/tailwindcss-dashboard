@@ -6,14 +6,16 @@ import CalendarBodyRow from "./items/CalendarBodyRow";
 interface CalendarBodyProps {
     showLineIfHeadIsActive: string,
     dateUtil: DateUtils,
-    setDateUtils: Dispatch<SetStateAction<DateUtils>>
+    setDateUtils: Dispatch<SetStateAction<DateUtils>>,
+    markedDates?: {marked_date:Date,color:string}[]
 }
 
 function CalendarBody(
 {
     dateUtil,
     showLineIfHeadIsActive,
-    setDateUtils
+    setDateUtils,
+    markedDates = []
 } : CalendarBodyProps){
 
     return (<>
@@ -23,7 +25,9 @@ function CalendarBody(
             setDateUtils={setDateUtils}
             showLineIfHeadIsActive={showLineIfHeadIsActive}/>
 
-        <CalendarBodyRow dateUtil={dateUtil} />
+        <CalendarBodyRow
+            dateUtil={dateUtil}
+            markedDates={markedDates} />
 
     </>);
 

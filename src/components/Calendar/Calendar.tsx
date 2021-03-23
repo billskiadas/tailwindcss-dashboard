@@ -5,13 +5,15 @@ import CalendarBody from "./items/CalendarBody/CalendarBody";
 
 interface CalendarProps {
     date?: Date,
-    headIsActive?: boolean
+    headIsActive?: boolean,
+    markedDates?: {marked_date:Date,color:string}[]
 }
 
 function Calendar(
     {
         date = new Date(),
-        headIsActive = true
+        headIsActive = true,
+        markedDates = []
     } : CalendarProps){
 
     const [dateUtils,setDateUtils] = useState(new DateUtils(date));
@@ -23,7 +25,8 @@ function Calendar(
         <CalendarBody
             showLineIfHeadIsActive={showLineIfHeadIsActive}
             dateUtil={dateUtils}
-            setDateUtils={setDateUtils} />
+            setDateUtils={setDateUtils}
+            markedDates={markedDates} />
 
     </div>);
 }

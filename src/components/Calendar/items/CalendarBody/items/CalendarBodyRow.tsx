@@ -2,11 +2,13 @@ import React from "react";
 import CalendarBodyRowItem from "./CalendarBodyRowItem";
 import DateUtils from "../../../utils/DateUtils";
 interface CalendarBodyRowProps {
-    dateUtil: DateUtils
+    dateUtil: DateUtils,
+    markedDates?: {marked_date:Date,color:string}[]
 }
 function  CalendarBodyRow(
     {
-        dateUtil
+        dateUtil,
+        markedDates = []
     } : CalendarBodyRowProps){
 
 
@@ -16,13 +18,13 @@ function  CalendarBodyRow(
         for (let i=0;i<datesOfMonthArray.length/7;i++){
             transformedDateContent.push(
                 <tr>
-                    <CalendarBodyRowItem dateUtil={dateUtil} dateContent={datesOfMonthArray[i*7]} />
-                    <CalendarBodyRowItem dateUtil={dateUtil} dateContent={datesOfMonthArray[i*7+1]} />
-                    <CalendarBodyRowItem dateUtil={dateUtil} dateContent={datesOfMonthArray[i*7+2]} />
-                    <CalendarBodyRowItem dateUtil={dateUtil} dateContent={datesOfMonthArray[i*7+3]} />
-                    <CalendarBodyRowItem dateUtil={dateUtil} dateContent={datesOfMonthArray[i*7+4]} />
-                    <CalendarBodyRowItem dateUtil={dateUtil} dateContent={datesOfMonthArray[i*7+5]} />
-                    <CalendarBodyRowItem dateUtil={dateUtil} dateContent={datesOfMonthArray[i*7+6]} />
+                    <CalendarBodyRowItem markedDates={markedDates} dateContent={datesOfMonthArray[i*7]} />
+                    <CalendarBodyRowItem markedDates={markedDates} dateContent={datesOfMonthArray[i*7+1]} />
+                    <CalendarBodyRowItem markedDates={markedDates} dateContent={datesOfMonthArray[i*7+2]} />
+                    <CalendarBodyRowItem markedDates={markedDates} dateContent={datesOfMonthArray[i*7+3]} />
+                    <CalendarBodyRowItem markedDates={markedDates} dateContent={datesOfMonthArray[i*7+4]} />
+                    <CalendarBodyRowItem markedDates={markedDates} dateContent={datesOfMonthArray[i*7+5]} />
+                    <CalendarBodyRowItem markedDates={markedDates} dateContent={datesOfMonthArray[i*7+6]} />
                 </tr>
             )
         }
