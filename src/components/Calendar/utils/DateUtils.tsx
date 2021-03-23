@@ -35,17 +35,19 @@ export default class DateUtils {
     }
 
     getDatesOfMonthFromDate(){
-        var date = new Date(this.date.getFullYear(), this.date.getMonth(), 1);
-        var days = [];
+        let date = new Date(this.date.getFullYear(), this.date.getMonth(), 1);
+        let days = [];
 
         // Inactive days of prev month
-        while (date.getDay() !== 0) {
-            days.push({
+        let prevDays = [];
+        while (date.getDay() !== 0 ) {
+            date.setDate(date.getDate()-1);
+            prevDays.push({
                 date:new Date(date),
                 active: false
             });
-            date.setDate(date.getDate()-1);
         }
+        prevDays.reverse().map(day => days.push(day));
 
         // Active days of current month
         date = new Date(this.date.getFullYear(), this.date.getMonth(), 1);
