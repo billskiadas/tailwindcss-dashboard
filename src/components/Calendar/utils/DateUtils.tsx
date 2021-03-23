@@ -20,6 +20,7 @@ export default class DateUtils {
         return this.date.getFullYear().toString();
     }
 
+
     getDayNameFromDate() {
 
         return this.dayNames[this.date.getDay()];
@@ -38,13 +39,12 @@ export default class DateUtils {
         var days = [];
 
         // Inactive days of prev month
-        date.setDate(date.getDate()-date.getDay()-1);
         while (date.getDay() !== 0) {
-            date.setDate(date.getDate()+1);
             days.push({
                 date:new Date(date),
                 active: false
             });
+            date.setDate(date.getDate()-1);
         }
 
         // Active days of current month
@@ -57,16 +57,15 @@ export default class DateUtils {
             date.setDate(date.getDate() + 1);
         }
 
-        date.setDate(date.getDate()+1);
-
         // Inactive days of next month
         while (date.getDay() !== 0) {
-            date.setDate(date.getDate()+1);
             days.push({
                 date: new Date(date),
                 active:false
             })
+            date.setDate(date.getDate()+1);
         }
+
         return days;
     }
 
