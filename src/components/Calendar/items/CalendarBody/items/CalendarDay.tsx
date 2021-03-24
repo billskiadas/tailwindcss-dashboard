@@ -1,15 +1,25 @@
-import React from "react";
+import React, {Dispatch, SetStateAction} from "react";
 
-interface CalendarBodyRowItemProps {
+interface CalendarDayProps {
+    selectedDate: Date,
+    setSelectedDate: Dispatch<SetStateAction<Date>>,
     dateContent: {date: Date, active: boolean},
     markedDates?: {marked_date:Date,color:string}[]
 }
 
-function  CalendarBodyRowItem(
+function  CalendarDay(
     {
+        selectedDate,
+        setSelectedDate,
         dateContent,
         markedDates = []
-    } : CalendarBodyRowItemProps){
+    } : CalendarDayProps){
+
+
+    const handleClick = () => {
+        if (dateContent.active)
+            setSelectedDate(dateContent.date);
+    }
 
     const foundDateMarked = () => {
         return markedDates?.find(mDate => datesAreEqual(dateContent.date, mDate.marked_date));
@@ -33,17 +43,22 @@ function  CalendarBodyRowItem(
             "py-3 px-2 md:px-3  text-center text-gray-300 dark:text-gray-500";
         const dateToday = new Date();
         return  (datesAreEqual(date,dateToday)?
-            <td className="py-3 px-2 md:px-3  text-center text-white cursor-pointer">
+            <td className="py-3 px-2 md:px-3  text-center text-white cursor-pointer" onClick={handleClick}>
                 <span className="p-2 rounded-full bg-blue-500">
-                    {date.getDate().toString()}
+                    {date.getDate().toString().length>1?
+                        date.getDate().toString() : '0'+date.getDate().toString() }
                 </span>
             </td>
             :
-            <td className={dateActive}>
-                {/*<span className="rounded-full border border-blue-500">*/}
-                {date.getDate().toString()}
-                {mDate ? markedDate(mDate.color) : null}
-                {/*</span>*/}
+            <td className={dateActive} onClick={handleClick}>
+                    <span className={
+                        datesAreEqual(selectedDate, dateContent.date) &&
+                        dateContent.active ?
+                        `p-2 rounded-full border border-blue-500` : ""}>
+                        {date.getDate().toString().length>1? date.getDate().toString() : '0'+date.getDate().toString() }
+                        {mDate ? markedDate(mDate.color) : null}
+                    </span>
+
             </td> );
 
     };
@@ -52,4 +67,4 @@ function  CalendarBodyRowItem(
     return (getDate(dateContent?.date,dateContent?.active));
 }
 
-export default  CalendarBodyRowItem;
+export default  CalendarDay;

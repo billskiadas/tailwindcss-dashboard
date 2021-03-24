@@ -28,8 +28,8 @@ function App() {
   return (
 
     <div className="App">
-        <Calendar markedDates={markedDates}  />
-
+        <Calendar
+            markedDates={markedDates}  />
     </div>
   );
 }
