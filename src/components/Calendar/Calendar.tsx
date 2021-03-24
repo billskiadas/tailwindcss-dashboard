@@ -38,8 +38,7 @@ function Calendar(
 
     }, []);
     return (
-
-            <div className=" shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-700 max-w-sm">
+            <div className="shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-700 max-w-sm">
                 {headIsActive ? <CalendarHead dateUtil={new DateUtils(selectedDate)}/> : null}
                 <CalendarBody
                     showLineIfHeadIsActive={showLineIfHeadIsActive}
