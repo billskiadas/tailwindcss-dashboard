@@ -31,7 +31,7 @@ function CalendarBody(
             setDateUtils={setDateUtils}
             setAnimatedEffect={setAnimatedEffect}
             showLineIfHeadIsActive={showLineIfHeadIsActive}/>
-
+            
         <CalendarMonth
             dateUtil={dateUtil}
             animatedEffect={animatedEffect}

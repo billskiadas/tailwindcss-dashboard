@@ -44,7 +44,7 @@ function  CalendarMonth(
         <div className={`${animatedEffect && "animate-poof "} flex flex-wrap overflow-hidden`}
              onAnimationEnd={()=>setAnimatedEffect(false)} >
             <div className="w-full rounded shadow-sm">
-                <div className="-mx-2 mt-4">
+                <div className="mt-4">
                     <table className="w-full dark:text-white">
                         <tbody>
                         <tr>

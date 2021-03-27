@@ -42,18 +42,19 @@ function  CalendarDay(
             "py-3 px-2 md:px-3  text-center text-gray-300 dark:text-gray-500";
         const dateToday = new Date();
         return  (datesAreEqual(date,dateToday)?
-            <td className="py-3 px-2 md:px-3  text-center text-white cursor-pointer" onClick={handleClick}>
-                <span className={`p-2 rounded-full bg-blue-500 ${todayIsClicked && "text-blue-100"}`}>
-                    {date.getDate().toString() }
-                </span>
+            <td className=" md:px-3 relative text-center text-white cursor-pointer" onClick={handleClick}>
+                <span className={`absolute rounded-full h-9 w-9 -z-1 bg-blue-500 left-1/2 -top-3 transform -translate-x-1/2 translate-y-1/2`}/>
+                <div className={`relative z-1  ${todayIsClicked && "text-blue-100"}`}>
+                    {date.getDate().toString()}
+                </div>
             </td>
             :
             <td className={dateActive } onClick={handleClick}>
-                <span className={ todayIsClicked && dateContent.active ? `absolute rounded-full h-9 w-9 bg-blue-200 left-1/2 -top-3  transform -translate-x-1/2 translate-y-2/4 -z-1 animate-fastpoof`: ""}/>
-                <div className={`relative z-1  ${todayIsClicked && "text-blue-500"}`}>
-                    {date.getDate().toString()}
-                </div>
-                {markedDate ? getMarkedDateByColor(markedDate.color) : null}
+                    <span className={ todayIsClicked && dateContent.active ? `absolute rounded-full h-9 w-9 bg-blue-200 left-1/2 -top-3  transform -translate-x-1/2 translate-y-2/4 -z-1 animate-fastpoof`: ""}/>
+                    <div className={`relative z-1  ${todayIsClicked && "text-blue-500"}`}>
+                        {date.getDate().toString()}
+                    </div>
+                    {markedDate ? getMarkedDateByColor(markedDate.color) : null}
             </td> );
 
     };

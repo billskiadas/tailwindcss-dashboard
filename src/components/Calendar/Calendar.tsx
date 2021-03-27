@@ -5,6 +5,7 @@ import CalendarBody from "./items/CalendarBody/CalendarBody";
 
 interface CalendarProps {
     date?: Date,
+    screenSize?: string,
     headIsActive?: boolean,
     markedDates?: {marked_date:Date,color:string}[]
 }
@@ -12,6 +13,7 @@ interface CalendarProps {
 function Calendar(
     {
         date = new Date(),
+        screenSize = "sm",
         headIsActive = true,
         markedDates = []
     } : CalendarProps){
@@ -37,9 +39,10 @@ function Calendar(
         };
 
     }, []);
+
     return (
-            <div className="shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-700 max-w-sm">
-                {headIsActive ? <CalendarHead dateUtil={new DateUtils(selectedDate)}/> : null}
+            <div className={`shadow-lg rounded-2xl bg-white dark:bg-gray-700 max-w-${screenSize} ${screenSize === "xs"? "p-1": "p-4"}`}>
+                {headIsActive && <CalendarHead dateUtil={new DateUtils(selectedDate)}/>}
                 <CalendarBody
                     showLineIfHeadIsActive={showLineIfHeadIsActive}
                     dateUtil={dateUtils}
@@ -47,7 +50,6 @@ function Calendar(
                     selectedDate={selectedDate}
                     setSelectedDate={setSelectedDate}
                     markedDates={markedDates} />
-
             </div>
         );
 }
