@@ -41,7 +41,7 @@ function  CalendarMonth(
 
 
     return (
-        <div className={`${animatedEffect && "animate-shake "} flex flex-wrap overflow-hidden`}
+        <div className={`${animatedEffect && "animate-poof "} flex flex-wrap overflow-hidden`}
              onAnimationEnd={()=>setAnimatedEffect(false)} >
             <div className="w-full rounded shadow-sm">
                 <div className="-mx-2 mt-4">
